@@ -358,7 +358,7 @@ app.post(
 app.post(
   "/feed/login",
   saveRedirectUrl,
-  passport.authenticate("local", {
+  passport.authenticate("User-local", {
     failureRedirect: "/main",
     failureFlash: true,
   }),
