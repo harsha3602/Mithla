@@ -1,0 +1,274 @@
+<nav class="navbar navbar-expand-lg navbar-custom shadow sticky-top">
+
+  <div class="container-fluid">
+    <img src="/images/logo.png" width="50px" height="50px" style="border-radius: 50px; margin-left: 20px">
+
+    <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarContent">
+
+      <div class="navbar-nav  ms-auto">
+        <a class="home-btn" href="/main">
+          <i class="fa-solid fa-house home-icon"></i>
+          <b class="home">Home</b>
+        </a>
+      </div>
+
+      <div class="navbar-nav  ms-auto search-input">
+        <form class="d-flex"  method="post" action="/search">
+          <input class="form-control me-2" type="search" placeholder="Search by name" id="search" name="search" >
+          <button class="btn  btn-primary" type="submit" id="searc">Search</button>
+        </form>
+      </div>
+
+
+      <div class="navbar-nav  ms-auto">
+        <% if(!curruser){%>
+
+          <div class="me-5  search-btn">
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#loginModalfeed">
+              <b> Add feed</b>
+            </button>
+          </div>
+
+
+          <div class="me-5 mt-2">
+            <a href="/signup" class="sign-up search-btn">
+              <b>Sign up</b></a>
+          </div>
+
+
+          <div>
+            <button type="button" class="btn search-btn" data-bs-toggle="modal" data-bs-target="#loginModallogin">
+              <b> Login</b>
+            </button>
+          </div>
+
+          <% } %>
+
+            <% if(curruser){%>
+
+              <div class="me-5">
+                <a href="/feed" class="feed search-btn">
+                  <b> Again feed</b>
+                </a>
+              </div>
+
+              <div class="me-4">
+                <a href="/logout" class="logout">
+                  <i class="fa-solid fa-right-to-bracket fa-shake"></i>
+                </a>
+              </div>
+              <% }%>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+
+
+
+<form method="post" action="/login/modal" novalidate class="needs-validation">
+
+  <div class="modal fade" id="loginModallogin" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalLabel">Login</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <!-- Modal Body -->
+        <div class="modal-body">
+
+          <div class="mb-3">
+            <label for="email" class="form-label"> Username</label>
+            <input type="text" class="form-control" id="email" name="username" required>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="rememberMe" required>
+            <label class="form-check-label" for="rememberMe">Remember Me</label>
+          </div>
+
+        </div>
+
+        <!-- Modal Footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Login</button>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</form>
+
+<!-- Modals -->
+
+<form method="post" action="/feed/login" novalidate class="needs-validation">
+
+  <div class="modal fade" id="loginModalfeed" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalLabel">Login</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <!-- Modal Body -->
+        <div class="modal-body">
+
+          <div class="mb-3">
+            <label for="email" class="form-label">Email or Username</label>
+            <input type="text" class="form-control" id="email" name="username" required>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="rememberMe" required>
+            <label class="form-check-label" for="rememberMe">Remember Me</label>
+          </div>
+
+        </div>
+
+        <!-- Modal Footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Login</button>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</form>
+
+
+
+ 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Search functionality
+            const searchInput = document.getElementById('searchInput');
+            const searchButton = document.getElementById('searchButton');
+            
+            searchButton.addEventListener('click', function() {
+                searchByName();
+            });
+            
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    searchByName();
+                }
+            });
+
+            function searchByName() {
+                const searchTerm = searchInput.value.trim();
+                if (searchTerm) {
+                    fetch(`/api/search?name=${encodeURIComponent(searchTerm)}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log('Search results:', data);
+                            // Handle search results here
+                            alert(`Found ${data.length} results for "${searchTerm}"`);
+                        })
+                        .catch(error => {
+                            console.error('Search error:', error);
+                            alert('Error occurred during search');
+                        });
+                }
+            }
+            const form = document.getElementById('registrationForm');
+            const passwordInput = document.getElementById('password');
+            const strengthBar = document.querySelector('.password-strength');
+            const requirementItems = document.querySelectorAll('[data-rule]');
+
+            passwordInput.addEventListener('input', function() {
+                validatePassword();
+                updateStrengthBar();
+            });
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                if (validatePassword()) {
+                    // Form would submit here if validation passes
+                    console.log('Form submission would occur now with valid password');
+                    // form.submit();
+                }
+            });
+
+            function validatePassword() {
+                const password = passwordInput.value;
+                let isValid = true;
+                
+                // Check each requirement
+                const requirements = {
+                    length: password.length >= 8,
+                    uppercase: /[A-Z]/.test(password),
+                    number: /\d/.test(password),
+                    special: /[!@#$%^&*(),.?":{}|<>]/.test(password)
+                };
+
+                // Update requirement indicators
+                requirementItems.forEach(item => {
+                    const rule = item.dataset.rule;
+                    if (requirements[rule]) {
+                        item.classList.remove('text-danger');
+                        item.classList.add('text-success');
+                    } else {
+                        item.classList.add('text-danger');
+                        item.classList.remove('text-success');
+                        isValid = false;
+                    }
+                });
+
+                // Toggle validation classes
+                if (isValid) {
+                    passwordInput.classList.add('is-valid');
+                    passwordInput.classList.remove('is-invalid');
+                } else {
+                    passwordInput.classList.add('is-invalid');
+                    passwordInput.classList.remove('is-valid');
+                }
+
+                return isValid;
+            }
+
+            function updateStrengthBar() {
+                const password = passwordInput.value;
+                let strength = 0;
+                
+                // Add strength for length
+                if (password.length >= 8) strength += 1;
+                if (password.length >= 12) strength += 1;
+                
+                // Add strength for character variety
+                if (/[A-Z]/.test(password)) strength += 1;
+                if (/\d/.test(password)) strength += 1;
+                if (/[!@#$%^&*(),.?":{}|<>]/.test(password)) strength += 1;
+                
+                // Update strength bar
+                const colors = ['#dc3545', '#ffc107', '#28a745'];
+                const width = Math.min(100, strength * 25); // Max 100% width
+                const colorIndex = Math.min(Math.floor(strength / 2), colors.length - 1);
+                
+                strengthBar.style.width = width + '%';
+                strengthBar.style.backgroundColor = colors[colorIndex];
+            }
+        });
+            
+              </script>

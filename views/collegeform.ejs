@@ -1,0 +1,172 @@
+<% layout("/layouts/boilerplate") -%>
+   <style>
+    body{
+    background-color:whitesmoke;
+
+}
+.container1{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+h2{
+    font-weight: 600;
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+   margin-top: 20px;
+    text-align: center;
+    word-spacing: 10px;
+   
+
+}
+.box{
+    /* margin-top: 10px; */
+    background-color: white;
+    border: 2px solid white;
+    height: 380px;
+    width: 600px ;
+    text-align: center;
+    border-radius: 10px;
+     box-shadow: 0 15px 30px rgba(0,0,0,0.30), 0 11px 8px rgba(0,0,0,0.20);
+     padding-top:70px ;
+    
+    
+
+}
+input{
+    width: 450px;
+    height:40px;
+    padding-left: 12px;
+    background-color: whitesmoke;
+    border: 1px solid rgb(113, 112, 112);
+    outline: none;
+    font-size: 20px;
+    color: black;
+    border-radius: 6px;
+       font-family: Arial, Helvetica, sans-serif;
+
+}
+input:placeholder-shown{
+    font-size: 12px;
+}
+.para{
+    margin-right: 388px;
+    font-size: 15px;
+    color:rgba(0, 0, 0, 0.58);
+       font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+}
+button{
+    width: 470px;
+    color: white;
+    background-color: black;
+    border-radius: 6px;
+    height: 45px;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: 'Courier New', Courier, monospace;
+    margin-top: 10px;
+}
+@media only screen and (max-width:1200px){
+    body{
+    background-color:whitesmoke;
+
+}
+.container{
+     width: 1000px;
+        margin-top: 500px;
+         text-align: center;
+         margin-left: 30px;
+}
+
+.container1{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+  
+h2{
+ 
+    font-weight: 600;
+    padding-top: 10px;
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+
+}
+.box{
+    background-color: white;
+    border: 2px solid white;
+    height: 420px;
+    width: 750px ;
+    text-align: center;
+    border-radius: 10px;
+     box-shadow: 0 15px 30px rgba(0,0,0,0.30), 0 11px 8px rgba(0,0,0,0.20);
+    
+    
+
+}
+input{
+    width: 530px;
+    height:40px;
+    padding-left: 12px;
+    background-color: whitesmoke;
+    border: 1px solid rgb(113, 112, 112);
+    outline: none;
+    font-size: 23px;
+    color: black;
+    border-radius: 6px;
+       font-family: Arial, Helvetica, sans-serif;
+
+}
+input:placeholder-shown{
+    font-size: 18px;
+}
+.para{
+    margin-right: 435px;
+    font-size: 20px;
+    color:rgba(0, 0, 0, 0.58);
+       font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+}
+button{
+    width: 550px;
+    color: white;
+    background-color: black;
+    border-radius: 6px;
+    height: 45px;
+    font-size: 24px;
+    font-weight: 700;
+    font-family: 'Courier New', Courier, monospace;
+    margin-top: 10px;
+}
+}
+
+
+   </style>
+
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+    <h2>Welcome To Aligarh College Of Engineering And Technology</h2>
+
+    <form method="post" action="/main">
+        <div class="container1">
+            <div class="box">
+                <p class="para">College Id</p>
+        <input placeholder="Enter college id" name="username" required id="inputbox" class="form-control">
+        <p class="para">Password</p>
+          <input placeholder="Enter password" name="password" required id="inputbox"class="form-control"><br><br><br>
+          
+          <button>Submit</button>
+          </div>
+          </div>
+    </form>
+       </div>
+</div>
+</body>
+</html>
+</body>
+</html>
