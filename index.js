@@ -380,7 +380,7 @@ app.get("/logout", (req, res, next) => {
 });
 
 app.use((req, res, next) => {
-  next(new ExpressError(400, "page not found"));
+  next(new ExpressError(400, "Page not found"));
 });
 
 app.use((err, req, res, next) => {
