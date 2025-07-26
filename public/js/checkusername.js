@@ -26,11 +26,12 @@ const checkvalidate = () => {
                 let numstring=""
                 for(let i=0;i<6;i++){
                     numstring+=Math.floor(Math.random()*10);
-                    
-                }
-                username.value = name + numstring; 
+                      username.value = name + numstring; 
                   msg.innerText ="Your existing username";
                   msg.style.color="red"
+                    
+                }
+              
             }
         } else {
             msg.innerText = "";
