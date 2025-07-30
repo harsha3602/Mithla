@@ -90,9 +90,7 @@ textarea:focus {
   box-shadow: none !important;
 }
 
-/* main card     <div class="card  feed-card mx-auto"  style="width: 530px;">
-*/
-
+/* main card    */
 .feed-card {
   margin: 1rem;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 11px 8px rgba(0, 0, 0, 0.2);
@@ -122,3 +120,40 @@ textarea:focus {
 .about-para{
   word-spacing: 8px;
 }
+
+.containerbox{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+.con{
+  width: 1300px;
+}
+
+
+.img-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.img{
+  width: 1150px;
+  height: 450px;
+}
+ @media only screen and (max-width:1255px){  
+.img-conatiner{
+   width: 500px;
+ 
+}
+.img-box{
+  width: 500px;
+  text-align: center;
+}
+.img{
+  width: 300px;
+  height: 150px;
+}
+}
+
