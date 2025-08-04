@@ -1,0 +1,22 @@
+<% layout("/layouts/boilerplate") -%>
+  <div class="row">
+    <div class="box  mt-3 mb-3">
+      <h2 class="text-center college-head">Welcome To Aligarh College Of Engineering And Technology</h2>
+      <p class="text-center mt-4 para">Hii <%= name %>
+      </p>
+      <form method="post" action="/main2" novalidate class="needs-validation">
+
+        <div class="">
+          <textarea class="form-control no-outline-textarea" id="validationTextarea"
+            placeholder=" Start to type message here!" name="data[content]" required>
+</textarea>
+          <div class="invalid-feedback text-center">
+            Please enter a message in the textarea.
+          </div>
+        </div>
+        <div class="text-center">
+          <button btn class="btn btn-dark text-center mt-2">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>

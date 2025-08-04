@@ -1,0 +1,26 @@
+<% layout("/layouts/boilerplate") -%>
+  <div class="container">
+    <div class="row">
+      <div class="col-7 offset-1 mt-5 signup_page">
+        <div class="heding offset-3 mt-3">
+          <h2 class="text-center">Sign up your account</h2>
+        </div>
+        <br>
+        <form method="post" action="/main1">
+          <div class="mb-3">
+            <label for="Username" class="form-label"> Username</label>
+            <input name="username" type="text" class="form-control" id="Username" required />
+          </div>
+
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input name="Password" type="text" class="form-control" id="Username" required />
+
+          </div>
+          <button class="btn btn-dark offset-3 mt-3 col-6">Login</button>
+          <br>
+          <br>
+          <a href="http://localhost:8000/form?" class="link col-12">Create a new account</a>
+        </form>
+      </div>
+    </div>
